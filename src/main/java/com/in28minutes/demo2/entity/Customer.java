@@ -1,6 +1,13 @@
 package com.in28minutes.demo2.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Customer {
+	@Id
+	@GeneratedValue
 	private long id;
 	private String name;
 	private String gender;
@@ -47,6 +54,19 @@ public class Customer {
 	public void setPrefFood(String prefFood) {
 		this.prefFood = prefFood;
 	}
+	
+	public void validateName() {
+		if(this.name.isBlank()) {
+			throw new RuntimeException("Name cannot be emppty");
+		}
+		
+	}
+	public void validateAge() {
+		if(this.age<15) {
+			throw new RuntimeException("age cannot be less than 15");
+		}
+	}
+
 	
 	
 	
